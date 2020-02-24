@@ -12,7 +12,7 @@ app.use("/menses", require("./router/articles"));
 app.listen('3000', () => {
     console.log('listen: 3000');
     // 开启自动脚本
-    // runSchedule(function() {
+     runSchedule(function() {
         main(url)
-    // })
+    })
 });

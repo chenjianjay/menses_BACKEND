@@ -81,8 +81,5 @@ function main(url) {
     })
 }
 
-app.listen(3378, function () {
-  console.log('server listening on 3378')
-})
 
 module.exports = main;
