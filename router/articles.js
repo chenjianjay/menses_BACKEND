@@ -30,7 +30,6 @@ router.post('/getArticles', function(req, res){
 })
 
 router.post('/getArticles/:id', function(req, res) {
-    console.log(req.params.id)
     db.query('articles', ['content'], {"id": req.params.id})
     .then(result => {
         res.send(

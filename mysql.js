@@ -24,7 +24,7 @@ db.queryPage = function(body, table, colsArr) {
     return new Promise((resolve, reject) => {
         const cols = colsArr.join(',')
         const start = (body.pageBegin -1) * body.pageNum
-        const sql = `select ${cols} from ${table} where id between ${start} and ${start + body.pageNum} limit ${start ? body.pageNum : body.pageNum-1}`
+        const sql = `select ${cols} from ${table} order by id desc limit ${start}, ${body.pageNum}`
         console.log(sql)
         pool.query(sql, function(error, result) {
             if (error) {
@@ -47,6 +47,11 @@ db.query = function(table, colsArr, where) {
                 sql += ` where ${keys[len]} = ${where[keys[len]]} and`
             }
             sql = sql.slice(0, -4)
+        }
+        try {
+            console.log('有人看了'+where.id)
+        } catch (error) {
+            
         }
         pool.query(sql, function(error, result) {
             if (error) {
