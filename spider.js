@@ -59,6 +59,7 @@ function main(url) {
       let lists = $('div#List .channel_mod .list li')
       let urls = []
       lists.each((idx, li)=>{
+	if(idx=='5') return false
         urls.push({
           title: $(li).find('h3 a').text(),
           author: $(li).find('.source').text(),
